@@ -1,18 +1,12 @@
-const largeImg = document.querySelector('.gallery__large-img');
-const gallery = document.querySelector('.gallery__list');
+const mainImg = document.querySelector('#largeImg');
+const galleryImg = document.querySelectorAll('.gallery__thumb');
 
-gallery.addEventListener('click', (e) => {
-  e.preventDefault();
+galleryImg.forEach((image) => {
+  image.addEventListener('click', (e) => {
+    e.preventDefault();
 
-  let link;
+    const newSrc = e.currentTarget.parentNode.href;
 
-  if (e.target.tagName === 'IMG') {
-    link = e.target.closest('a');
-  } else if (e.target.tagName === 'A') {
-    link = e.target;
-  }
-
-  if (link) {
-    largeImg.src = link.href;
-  }
+    mainImg.src = newSrc;
+  });
 });
